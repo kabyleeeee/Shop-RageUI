@@ -1,4 +1,16 @@
 CreateThread(function()
+
+    for k,v in pairs(Config.positions) do 
+        local blip = AddBlipForCoord(v.x, v.y, v.z)
+        SetBlipSprite(blip, Config.blips.sprite)
+        SetBlipScale(blip, Config.blips.scale)
+        SetBlipColour(blip, Config.blips.colour)
+        SetBlipAsShortRange(blip, true)
+        BeginTextCommandSetBlipName("STRING")
+        AddTextComponentString(Config.blips.label)
+        EndTextCommandSetBlipName(blip)
+    end
+
     while true do
         timer = 750
         local playerCoords = GetEntityCoords(PlayerPedId())
